@@ -115,6 +115,9 @@ python get_and_clean_data_programs/clean-data.py
 
 7. Click on the code icon ("</>") and insert the generated script code into the `<body>` tag of your website.
 
+## Flowise Workflow
+![image](https://github.com/user-attachments/assets/c0df8b6c-3b1c-432e-82f7-fe3340622775)
+
 ## Demo
 
 To see a live demo of the StackUp Query Assistant, visit the following link:
