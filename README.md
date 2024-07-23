@@ -120,10 +120,7 @@ python get_and_clean_data_programs/clean-data.py
 ![image](https://github.com/user-attachments/assets/c0df8b6c-3b1c-432e-82f7-fe3340622775)
 
 ## Demo
-
-To see a live demo of the StackUp Query Assistant, visit the following link:
-
-[Demo Link]()
+https://github.com/user-attachments/assets/33e77296-d20f-429c-b82a-42e02c92bf2f
 
 ## Important Note
 
