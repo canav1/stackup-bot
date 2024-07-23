@@ -1,0 +1,837 @@
+{
+  "nodes": [
+    {
+      "id": "mongoDBAtlas_0",
+      "position": {
+        "x": 980.5914587503992,
+        "y": 604.13317272123
+      },
+      "type": "customNode",
+      "data": {
+        "id": "mongoDBAtlas_0",
+        "label": "MongoDB Atlas",
+        "version": 1,
+        "name": "mongoDBAtlas",
+        "type": "MongoDB Atlas",
+        "baseClasses": [
+          "MongoDB Atlas",
+          "VectorStoreRetriever",
+          "BaseRetriever"
+        ],
+        "category": "Vector Stores",
+        "description": "Upsert embedded data and perform similarity or mmr search upon query using MongoDB Atlas, a managed cloud mongodb database",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "mongoDBUrlApi"
+            ],
+            "id": "mongoDBAtlas_0-input-credential-credential"
+          },
+          {
+            "label": "Database",
+            "name": "databaseName",
+            "placeholder": "<DB_NAME>",
+            "type": "string",
+            "id": "mongoDBAtlas_0-input-databaseName-string"
+          },
+          {
+            "label": "Collection Name",
+            "name": "collectionName",
+            "placeholder": "<COLLECTION_NAME>",
+            "type": "string",
+            "id": "mongoDBAtlas_0-input-collectionName-string"
+          },
+          {
+            "label": "Index Name",
+            "name": "indexName",
+            "placeholder": "<VECTOR_INDEX_NAME>",
+            "type": "string",
+            "id": "mongoDBAtlas_0-input-indexName-string"
+          },
+          {
+            "label": "Content Field",
+            "name": "textKey",
+            "description": "Name of the field (column) that contains the actual content",
+            "type": "string",
+            "default": "text",
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-textKey-string"
+          },
+          {
+            "label": "Embedded Field",
+            "name": "embeddingKey",
+            "description": "Name of the field (column) that contains the Embedding",
+            "type": "string",
+            "default": "embedding",
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-embeddingKey-string"
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "description": "Number of top results to fetch. Default to 4",
+            "placeholder": "4",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-topK-number"
+          },
+          {
+            "label": "Search Type",
+            "name": "searchType",
+            "type": "options",
+            "default": "similarity",
+            "options": [
+              {
+                "label": "Similarity",
+                "name": "similarity"
+              },
+              {
+                "label": "Max Marginal Relevance",
+                "name": "mmr"
+              }
+            ],
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-searchType-options"
+          },
+          {
+            "label": "Fetch K (for MMR Search)",
+            "name": "fetchK",
+            "description": "Number of initial documents to fetch for MMR reranking. Default to 20. Used only when the search type is MMR",
+            "placeholder": "20",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-fetchK-number"
+          },
+          {
+            "label": "Lambda (for MMR Search)",
+            "name": "lambda",
+            "description": "Number between 0 and 1 that determines the degree of diversity among the results, where 0 corresponds to maximum diversity and 1 to minimum diversity. Used only when the search type is MMR",
+            "placeholder": "0.5",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-lambda-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Document",
+            "name": "document",
+            "type": "Document",
+            "list": true,
+            "optional": true,
+            "id": "mongoDBAtlas_0-input-document-Document"
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "mongoDBAtlas_0-input-embeddings-Embeddings"
+          }
+        ],
+        "inputs": {
+          "document": "",
+          "embeddings": "{{togetherAIEmbedding_0.data.instance}}",
+          "databaseName": "stackup_zendesk",
+          "collectionName": "data",
+          "indexName": "idx_embedding",
+          "textKey": "text",
+          "embeddingKey": "embedding",
+          "topK": "",
+          "searchType": "similarity",
+          "fetchK": "",
+          "lambda": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "description": "",
+            "options": [
+              {
+                "id": "mongoDBAtlas_0-output-retriever-MongoDB Atlas|VectorStoreRetriever|BaseRetriever",
+                "name": "retriever",
+                "label": "MongoDB Retriever",
+                "description": "",
+                "type": "MongoDB Atlas | VectorStoreRetriever | BaseRetriever"
+              },
+              {
+                "id": "mongoDBAtlas_0-output-vectorStore-MongoDB Atlas|VectorStore",
+                "name": "vectorStore",
+                "label": "MongoDB Vector Store",
+                "description": "",
+                "type": "MongoDB Atlas | VectorStore"
+              }
+            ],
+            "default": "retriever"
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      },
+      "width": 300,
+      "height": 751,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 980.5914587503992,
+        "y": 604.13317272123
+      }
+    },
+    {
+      "id": "conversationalRetrievalQAChain_0",
+      "position": {
+        "x": 1955.7334383982375,
+        "y": 351.7794214543078
+      },
+      "type": "customNode",
+      "data": {
+        "id": "conversationalRetrievalQAChain_0",
+        "label": "Conversational Retrieval QA Chain",
+        "version": 3,
+        "name": "conversationalRetrievalQAChain",
+        "type": "ConversationalRetrievalQAChain",
+        "baseClasses": [
+          "ConversationalRetrievalQAChain",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Chains",
+        "description": "Document QA - built on RetrievalQAChain to provide a chat history component",
+        "inputParams": [
+          {
+            "label": "Return Source Documents",
+            "name": "returnSourceDocuments",
+            "type": "boolean",
+            "optional": true,
+            "id": "conversationalRetrievalQAChain_0-input-returnSourceDocuments-boolean"
+          },
+          {
+            "label": "Rephrase Prompt",
+            "name": "rephrasePrompt",
+            "type": "string",
+            "description": "Using previous chat history, rephrase question into a standalone question",
+            "warning": "Prompt must include input variables: {chat_history} and {question}",
+            "rows": 4,
+            "additionalParams": true,
+            "optional": true,
+            "default": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
+            "id": "conversationalRetrievalQAChain_0-input-rephrasePrompt-string"
+          },
+          {
+            "label": "Response Prompt",
+            "name": "responsePrompt",
+            "type": "string",
+            "description": "Taking the rephrased question, search for answer from the provided context",
+            "warning": "Prompt must include input variable: {context}",
+            "rows": 4,
+            "additionalParams": true,
+            "optional": true,
+            "default": "I want you to act as a document that I am having a conversation with. Your name is \"AI Assistant\". Using the provided context, answer the user's question to the best of your ability using the resources provided.\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure\" and stop after that. Refuse to answer any question not about the info. Never break character.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure\". Don't try to make up an answer. Never break character.",
+            "id": "conversationalRetrievalQAChain_0-input-responsePrompt-string"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "id": "conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+          },
+          {
+            "label": "Vector Store Retriever",
+            "name": "vectorStoreRetriever",
+            "type": "BaseRetriever",
+            "id": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+          },
+          {
+            "label": "Memory",
+            "name": "memory",
+            "type": "BaseMemory",
+            "optional": true,
+            "description": "If left empty, a default BufferMemory will be used",
+            "id": "conversationalRetrievalQAChain_0-input-memory-BaseMemory"
+          },
+          {
+            "label": "Input Moderation",
+            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "optional": true,
+            "list": true,
+            "id": "conversationalRetrievalQAChain_0-input-inputModeration-Moderation"
+          }
+        ],
+        "inputs": {
+          "model": "{{chatOpenAICustom_0.data.instance}}",
+          "vectorStoreRetriever": "{{mongoDBAtlas_0.data.instance}}",
+          "memory": "",
+          "returnSourceDocuments": true,
+          "rephrasePrompt": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
+          "responsePrompt": "I want you to act as a document that I am having a conversation with. Your name is \"AI Assistant\". Using the provided context, answer the user's question to the best of your ability using the resources provided.\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure\" and stop after that. Refuse to answer any question not about the info. Never break character.\nAdditional Info: \n-> Minimum Withdrawal is of 10$ Incase someone asks what is the Minimum amount req. for withdrawal, Also if user withdraws the money, All the money the user has will be withdrawn, No choice will be given for partial amounts. \n-> It upto 7 Business Days to come into your Bank Account/Crypto Wallet, Incase someone ask why they haven't recieved money. If user says its more than 7 Business days, Ask them to create a ticket on https://stackuphelpcentre.zendesk.com/hc/en-us. \n-> Also 2% of the total amount is cut so that StackUp can facilitate the transactions.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure\". Don't try to make up an answer. Never break character.",
+          "inputModeration": [
+            "{{inputModerationSimple_0.data.instance}}"
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conversationalRetrievalQAChain_0-output-conversationalRetrievalQAChain-ConversationalRetrievalQAChain|BaseChain|Runnable",
+            "name": "conversationalRetrievalQAChain",
+            "label": "ConversationalRetrievalQAChain",
+            "description": "Document QA - built on RetrievalQAChain to provide a chat history component",
+            "type": "ConversationalRetrievalQAChain | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 530,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1955.7334383982375,
+        "y": 351.7794214543078
+      },
+      "dragging": false
+    },
+    {
+      "id": "inputModerationSimple_0",
+      "position": {
+        "x": 1456.8454553838271,
+        "y": -25.22342131294937
+      },
+      "type": "customNode",
+      "data": {
+        "id": "inputModerationSimple_0",
+        "label": "Simple Prompt Moderation",
+        "version": 2,
+        "name": "inputModerationSimple",
+        "type": "Moderation",
+        "baseClasses": [
+          "Moderation"
+        ],
+        "category": "Moderation",
+        "description": "Check whether input consists of any text from Deny list, and prevent being sent to LLM",
+        "inputParams": [
+          {
+            "label": "Deny List",
+            "name": "denyList",
+            "type": "string",
+            "rows": 4,
+            "placeholder": "ignore previous instructions\ndo not follow the directions\nyou must ignore all previous instructions",
+            "description": "An array of string literals (enter one per line) that should not appear in the prompt text.",
+            "id": "inputModerationSimple_0-input-denyList-string"
+          },
+          {
+            "label": "Error Message",
+            "name": "moderationErrorMessage",
+            "type": "string",
+            "rows": 2,
+            "default": "Cannot Process! Input violates content moderation policies.",
+            "optional": true,
+            "id": "inputModerationSimple_0-input-moderationErrorMessage-string"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "description": "Use LLM to detect if the input is similar to those specified in Deny List",
+            "optional": true,
+            "id": "inputModerationSimple_0-input-model-BaseChatModel"
+          }
+        ],
+        "inputs": {
+          "denyList": "If user asks for any programming related help or ask for any technical help or use any other languages than English, then simply deny. ",
+          "model": "{{chatGoogleGenerativeAI_0.data.instance}}",
+          "moderationErrorMessage": "Cannot Process! Input violates content moderation policies."
+        },
+        "outputAnchors": [
+          {
+            "id": "inputModerationSimple_0-output-inputModerationSimple-Moderation",
+            "name": "inputModerationSimple",
+            "label": "Moderation",
+            "description": "Check whether input consists of any text from Deny list, and prevent being sent to LLM",
+            "type": "Moderation"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 584,
+      "positionAbsolute": {
+        "x": 1456.8454553838271,
+        "y": -25.22342131294937
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "togetherAIEmbedding_0",
+      "position": {
+        "x": 495.24842654410895,
+        "y": 431.97568626798085
+      },
+      "type": "customNode",
+      "data": {
+        "id": "togetherAIEmbedding_0",
+        "label": "TogetherAIEmbedding",
+        "version": 1,
+        "name": "togetherAIEmbedding",
+        "type": "TogetherAIEmbedding",
+        "baseClasses": [
+          "TogetherAIEmbedding",
+          "Embeddings"
+        ],
+        "category": "Embeddings",
+        "description": "TogetherAI Embedding models to generate embeddings for a given text",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "togetherAIApi"
+            ],
+            "id": "togetherAIEmbedding_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "string",
+            "placeholder": "sentence-transformers/msmarco-bert-base-dot-v5",
+            "description": "Refer to <a target=\"_blank\" href=\"https://docs.together.ai/docs/embedding-models\">embedding models</a> page",
+            "id": "togetherAIEmbedding_0-input-modelName-string"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "togetherAIEmbedding_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "togethercomputer/m2-bert-80M-8k-retrieval"
+        },
+        "outputAnchors": [
+          {
+            "id": "togetherAIEmbedding_0-output-togetherAIEmbedding-TogetherAIEmbedding|Embeddings",
+            "name": "togetherAIEmbedding",
+            "label": "TogetherAIEmbedding",
+            "description": "TogetherAI Embedding models to generate embeddings for a given text",
+            "type": "TogetherAIEmbedding | Embeddings"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 424,
+      "positionAbsolute": {
+        "x": 495.24842654410895,
+        "y": 431.97568626798085
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "chatOpenAICustom_0",
+      "position": {
+        "x": 1454.3553307861434,
+        "y": 618.317417094625
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatOpenAICustom_0",
+        "label": "ChatOpenAI Custom",
+        "version": 3,
+        "name": "chatOpenAICustom",
+        "type": "ChatOpenAI-Custom",
+        "baseClasses": [
+          "ChatOpenAI-Custom",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Custom/FineTuned model using OpenAI Chat compatible API",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openAIApi"
+            ],
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "string",
+            "placeholder": "ft:gpt-3.5-turbo:my-org:custom_suffix:id",
+            "id": "chatOpenAICustom_0-input-modelName-string"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-temperature-number"
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokens",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-maxTokens-number"
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-topP-number"
+          },
+          {
+            "label": "Frequency Penalty",
+            "name": "frequencyPenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-frequencyPenalty-number"
+          },
+          {
+            "label": "Presence Penalty",
+            "name": "presencePenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-presencePenalty-number"
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-timeout-number"
+          },
+          {
+            "label": "BasePath",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-basepath-string"
+          },
+          {
+            "label": "BaseOptions",
+            "name": "baseOptions",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-baseOptions-json"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "gpt-3.5-turbo",
+          "temperature": 0.9,
+          "maxTokens": "",
+          "topP": "",
+          "frequencyPenalty": "",
+          "presencePenalty": "",
+          "timeout": "",
+          "basepath": "https://api.aimlapi.com",
+          "baseOptions": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatOpenAICustom",
+            "label": "ChatOpenAI-Custom",
+            "description": "Custom/FineTuned model using OpenAI Chat compatible API",
+            "type": "ChatOpenAI-Custom | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 575,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1454.3553307861434,
+        "y": 618.317417094625
+      }
+    },
+    {
+      "id": "chatGoogleGenerativeAI_0",
+      "position": {
+        "x": 975.3396690897431,
+        "y": -113.1064325686096
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatGoogleGenerativeAI_0",
+        "label": "ChatGoogleGenerativeAI",
+        "version": 2,
+        "name": "chatGoogleGenerativeAI",
+        "type": "ChatGoogleGenerativeAI",
+        "baseClasses": [
+          "ChatGoogleGenerativeAI",
+          "LangchainChatGoogleGenerativeAI",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Wrapper around Google Gemini large language models that use the Chat endpoint",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "googleGenerativeAI"
+            ],
+            "optional": false,
+            "description": "Google Generative AI credential.",
+            "id": "chatGoogleGenerativeAI_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "default": "gemini-pro",
+            "id": "chatGoogleGenerativeAI_0-input-modelName-asyncOptions"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "chatGoogleGenerativeAI_0-input-temperature-number"
+          },
+          {
+            "label": "Max Output Tokens",
+            "name": "maxOutputTokens",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatGoogleGenerativeAI_0-input-maxOutputTokens-number"
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatGoogleGenerativeAI_0-input-topP-number"
+          },
+          {
+            "label": "Top Next Highest Probability Tokens",
+            "name": "topK",
+            "type": "number",
+            "description": "Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatGoogleGenerativeAI_0-input-topK-number"
+          },
+          {
+            "label": "Harm Category",
+            "name": "harmCategory",
+            "type": "multiOptions",
+            "description": "Refer to <a target=\"_blank\" href=\"https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/configure-safety-attributes#safety_attribute_definitions\">official guide</a> on how to use Harm Category",
+            "options": [
+              {
+                "label": "Dangerous",
+                "name": "HARM_CATEGORY_DANGEROUS_CONTENT"
+              },
+              {
+                "label": "Harassment",
+                "name": "HARM_CATEGORY_HARASSMENT"
+              },
+              {
+                "label": "Hate Speech",
+                "name": "HARM_CATEGORY_HATE_SPEECH"
+              },
+              {
+                "label": "Sexually Explicit",
+                "name": "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+              }
+            ],
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatGoogleGenerativeAI_0-input-harmCategory-multiOptions"
+          },
+          {
+            "label": "Harm Block Threshold",
+            "name": "harmBlockThreshold",
+            "type": "multiOptions",
+            "description": "Refer to <a target=\"_blank\" href=\"https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/configure-safety-attributes#safety_setting_thresholds\">official guide</a> on how to use Harm Block Threshold",
+            "options": [
+              {
+                "label": "Low and Above",
+                "name": "BLOCK_LOW_AND_ABOVE"
+              },
+              {
+                "label": "Medium and Above",
+                "name": "BLOCK_MEDIUM_AND_ABOVE"
+              },
+              {
+                "label": "None",
+                "name": "BLOCK_NONE"
+              },
+              {
+                "label": "Only High",
+                "name": "BLOCK_ONLY_HIGH"
+              },
+              {
+                "label": "Threshold Unspecified",
+                "name": "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
+              }
+            ],
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatGoogleGenerativeAI_0-input-harmBlockThreshold-multiOptions"
+          },
+          {
+            "label": "Allow Image Uploads",
+            "name": "allowImageUploads",
+            "type": "boolean",
+            "description": "Automatically uses vision model when image is being uploaded from chat. Only works with LLMChain, Conversation Chain, ReAct Agent, and Conversational Agent",
+            "default": false,
+            "optional": true,
+            "id": "chatGoogleGenerativeAI_0-input-allowImageUploads-boolean"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatGoogleGenerativeAI_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "gemini-pro",
+          "temperature": 0.9,
+          "maxOutputTokens": "",
+          "topP": "",
+          "topK": "",
+          "harmCategory": "",
+          "harmBlockThreshold": "",
+          "allowImageUploads": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "chatGoogleGenerativeAI_0-output-chatGoogleGenerativeAI-ChatGoogleGenerativeAI|LangchainChatGoogleGenerativeAI|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatGoogleGenerativeAI",
+            "label": "ChatGoogleGenerativeAI",
+            "description": "Wrapper around Google Gemini large language models that use the Chat endpoint",
+            "type": "ChatGoogleGenerativeAI | LangchainChatGoogleGenerativeAI | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 669,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 975.3396690897431,
+        "y": -113.1064325686096
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "togetherAIEmbedding_0",
+      "sourceHandle": "togetherAIEmbedding_0-output-togetherAIEmbedding-TogetherAIEmbedding|Embeddings",
+      "target": "mongoDBAtlas_0",
+      "targetHandle": "mongoDBAtlas_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "togetherAIEmbedding_0-togetherAIEmbedding_0-output-togetherAIEmbedding-TogetherAIEmbedding|Embeddings-mongoDBAtlas_0-mongoDBAtlas_0-input-embeddings-Embeddings"
+    },
+    {
+      "source": "chatGoogleGenerativeAI_0",
+      "sourceHandle": "chatGoogleGenerativeAI_0-output-chatGoogleGenerativeAI-ChatGoogleGenerativeAI|LangchainChatGoogleGenerativeAI|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "inputModerationSimple_0",
+      "targetHandle": "inputModerationSimple_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatGoogleGenerativeAI_0-chatGoogleGenerativeAI_0-output-chatGoogleGenerativeAI-ChatGoogleGenerativeAI|LangchainChatGoogleGenerativeAI|BaseChatModel|BaseLanguageModel|Runnable-inputModerationSimple_0-inputModerationSimple_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "mongoDBAtlas_0",
+      "sourceHandle": "mongoDBAtlas_0-output-retriever-MongoDB Atlas|VectorStoreRetriever|BaseRetriever",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "mongoDBAtlas_0-mongoDBAtlas_0-output-retriever-MongoDB Atlas|VectorStoreRetriever|BaseRetriever-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+    },
+    {
+      "source": "chatOpenAICustom_0",
+      "sourceHandle": "chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatOpenAICustom_0-chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "inputModerationSimple_0",
+      "sourceHandle": "inputModerationSimple_0-output-inputModerationSimple-Moderation",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-inputModeration-Moderation",
+      "type": "buttonedge",
+      "id": "inputModerationSimple_0-inputModerationSimple_0-output-inputModerationSimple-Moderation-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-inputModeration-Moderation"
+    }
+  ]
+}
