@@ -21,6 +21,7 @@ Welcome to the StackUp Query Assistant repository! This project aims to help use
 │   ├── cleaned_data.txt
 ├── StackUp_Bot_Chatflow.json
 ├── requirements.txt
+├── index.html
 └── README.md
 ```
 
