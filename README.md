@@ -1,1 +1,1 @@
-# stackup-bot
+# StackUp Helper Bot
