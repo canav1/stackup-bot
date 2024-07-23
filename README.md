@@ -1,6 +1,6 @@
 # StackUp Helper Bot
 
-This repository contains a Retrieval-Augmented Generation (RAG) based Language Model (LLM) designed to assist users with their queries regarding the StackUp website. The model leverages data scraped from the StackUp Zendesk page to provide accurate and contextually relevant answers.
+Welcome to the StackUp Query Assistant repository! This project aims to help users with their questions about the StackUp website by providing quick and relevant answers. The assistant uses information gathered from the StackUp Zendesk help center to ensure that users get the support they need. This help reduce the load on the Operations team and the time req. to resolve Simple Issues.
 
 ## Features
 
